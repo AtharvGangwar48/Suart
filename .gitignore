@@ -1,0 +1,11 @@
+#File that is created by MacOS only
+.DS_Store
+#The libraries are not to be uploaded on GitHub 
+/venv
+#This project needs
+#flask, Flask, render_template, request, jsonify, 
+#numpy 
+#nltk
+#string
+#sklearn.feature_extraction.text --> TfidfVectorizer
+#sklearn.metrics.pairwise --> cosine_similarity
