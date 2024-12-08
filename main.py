@@ -8,6 +8,11 @@ import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+#Use these lines if you are using this codebase for first time in your machine
+# nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('wordnet')
+
 app = Flask(__name__)
 
 # Load the text file and process it
