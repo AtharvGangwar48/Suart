@@ -1,58 +1,63 @@
 from flask import Flask, render_template, request, jsonify
 import numpy as np
 import nltk
+from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize, sent_tokenize
 import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-#Use these lines if you are using this codebase for first time in your machine
+# Download necessary NLTK resources if not already available
 # nltk.download('punkt')
 # nltk.download('stopwords')
 # nltk.download('wordnet')
 
+# Initialize the Flask app
 app = Flask(__name__)
 
-# Load the text file and process it
-with open('Data.txt', 'r', errors='ignore') as f:
-    raw_doc = f.read().lower()
+# Load and process the document
+with open('Data.txt', 'r', errors='ignore') as file:
+    document = file.read().lower()
 
-# Tokenize the document into sentences
-sent_tokens = nltk.sent_tokenize(raw_doc)
+# Tokenize document into sentences
+sentences = sent_tokenize(document)
 
-# Initialize the lemmatizer and punctuation removal dictionary
-lemmer = nltk.stem.WordNetLemmatizer()
-remove_punct_dict = dict((ord(punct), None) for punct in string.punctuation)
+# Initialize Lemmatizer and Punctuation Removal Dictionary
+lemmatizer = WordNetLemmatizer()
+punctuation_removal = {ord(punctuation): None for punctuation in string.punctuation}
 
-def lemmatize_tokens(tokens):
-    """Lemmatize the given tokens."""
-    return [lemmer.lemmatize(token) for token in tokens]
+def process_tokens(tokens):
+    """Lemmatize and clean the given list of tokens."""
+    return [lemmatizer.lemmatize(token) for token in tokens]
 
-def normalize_text(text):
-    """Normalize the text by converting to lowercase and removing punctuation."""
-    return lemmatize_tokens(nltk.word_tokenize(text.lower().translate(remove_punct_dict)))
+def clean_text(text):
+    """Lowercase and remove punctuation from the text."""
+    return process_tokens(word_tokenize(text.lower().translate(punctuation_removal)))
 
-@app.route('/asking', methods=['GET'])
+@app.route('/')
 def home():
+    """Render the main webpage."""
     return render_template('index.html')
 
-@app.route('/question/<string:user_response>', methods=['GET'])
-def get_response(user_response):
-    """Get a response based on user input."""
-    tfidf_vectorizer = TfidfVectorizer(tokenizer=normalize_text, stop_words='english')
-    tfidf = tfidf_vectorizer.fit_transform([user_response] + sent_tokens)
-    similarity_scores = cosine_similarity(tfidf[0:1], tfidf[1:])
-    idx = similarity_scores.argsort()[0][-1]
-    flat_scores = similarity_scores.flatten()
-    flat_scores.sort()
-    required_score = flat_scores[-1]
+@app.route('/ask/<user_query>', methods=['GET'])
+def answer_query(user_query):
+    """Generate an answer to the user's query based on the document."""
+    tfidf_vectorizer = TfidfVectorizer(tokenizer=clean_text, stop_words='english')
+    tfidf_matrix = tfidf_vectorizer.fit_transform([user_query] + sentences)
     
-    if required_score == 0:
-        return "I am sorry! I don't understand you."
+    # Compute cosine similarity scores between the user's query and the document sentences
+    similarity = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:])
+    
+    # Find the sentence with the highest similarity score
+    similarity_scores = similarity.flatten()
+    most_similar_idx = similarity_scores.argsort()[-1]
+
+    # Check if the similarity score is significant enough
+    if similarity_scores[most_similar_idx] == 0:
+        return "Sorry, I couldn't understand your question."
     else:
-        return sent_tokens[idx]
+        return sentences[most_similar_idx]
 
 if __name__ == "__main__":
     app.run(debug=True)
