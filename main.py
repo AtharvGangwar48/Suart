@@ -8,7 +8,7 @@ import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Download necessary NLTK resources if not already available
+# Download necessary NLTK resources if you run this code for the first time
 # nltk.download('punkt')
 # nltk.download('stopwords')
 # nltk.download('wordnet')
