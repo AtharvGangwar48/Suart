@@ -18,13 +18,48 @@ class RiskScorer:
             total_score += 8
             risk_factors.append("hate_speech")
         
+        # Content category scores
+        categories = content.get("content_categories", {})
+        if categories.get("is_flagged"):
+            detected = categories.get("detected_categories", [])
+            
+            if "terror" in detected:
+                total_score += 10
+                risk_factors.append("terrorism_content")
+            
+            if "hateful" in detected:
+                total_score += 8
+                risk_factors.append("hateful_content")
+            
+            if "sexual" in detected:
+                total_score += 6
+                risk_factors.append("sexual_content")
+            
+            if "abusive" in detected:
+                total_score += 5
+                risk_factors.append("abusive_content")
+            
+            if "drug" in detected:
+                total_score += 7
+                risk_factors.append("drug_content")
+            
+            if "spam" in detected:
+                total_score += 3
+                risk_factors.append("spam_content")
+            
+            if "religious" in detected:
+                total_score += 6
+                risk_factors.append("religious_extremism")
+        
         # Media analysis scores
         if content.get("nsfw", {}).get("is_nsfw"):
             total_score += 6
             risk_factors.append("nsfw_content")
         
         # Determine risk level
-        if total_score >= 8:
+        if total_score >= 10:
+            risk_level = "CRITICAL"
+        elif total_score >= 8:
             risk_level = "DANGEROUS"
         elif total_score >= 4:
             risk_level = "WARNING"

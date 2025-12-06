@@ -1,0 +1,136 @@
+.home-content {
+  margin-top: 50px;
+}
+
+.need-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+  margin-bottom: 40px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.need-section h2 {
+  color: #FF6B6B;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.need-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.need-card {
+  background: linear-gradient(135deg, rgba(255, 230, 109, 0.1), rgba(78, 205, 196, 0.1));
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s;
+  border: 2px solid rgba(255, 142, 83, 0.2);
+}
+
+.need-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(255, 142, 83, 0.3);
+  border-color: #FF8E53;
+}
+
+.need-icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.need-card h3 {
+  color: #FF6B6B;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.need-card p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.faq-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.faq-section h2 {
+  color: #FF6B6B;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 20px;
+}
+
+.faq-item {
+  background: linear-gradient(135deg, rgba(255, 230, 109, 0.1), rgba(78, 205, 196, 0.1));
+  padding: 25px;
+  border-radius: 15px;
+  border-left: 5px solid #FF8E53;
+  transition: all 0.3s;
+}
+
+.faq-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(255, 142, 83, 0.2);
+  border-left-width: 8px;
+}
+
+.faq-item h3 {
+  color: #FF6B6B;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.faq-item p {
+  color: #555;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .need-section,
+  .faq-section {
+    padding: 25px;
+  }
+
+  .need-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .need-section h2,
+  .faq-section h2 {
+    font-size: 1.8rem;
+  }
+}

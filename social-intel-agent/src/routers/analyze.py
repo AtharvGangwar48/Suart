@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from src.services.dispatcher_mock import AnalysisDispatcher
+from src.services.universal_dispatcher import UniversalAnalysisDispatcher
 
 router = APIRouter(prefix="/analyze", tags=["analysis"])
 
@@ -11,7 +11,7 @@ class AnalyzeRequest(BaseModel):
 @router.post("/")
 async def analyze_content(request: AnalyzeRequest):
     try:
-        dispatcher = AnalysisDispatcher()
+        dispatcher = UniversalAnalysisDispatcher()
         result = await dispatcher.analyze(request.url, request.deep_analysis)
         return result
     except Exception as e:
