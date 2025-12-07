@@ -1,16 +1,25 @@
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
-.env
-*.log
-.DS_Store
-node_modules/
-dist/
-build/
+# Python
+social-intel-agent/venv/
+social-intel-agent/__pycache__/
+social-intel-agent/**/__pycache__/
+social-intel-agent/**/*.pyc
+social-intel-agent/.env
 
-k/
+# Node
+react-interface/node_modules/
+react-interface/build/
+react-interface/.env
+
+# Models cache
+social-intel-agent/.cache/
+social-intel-agent/models/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

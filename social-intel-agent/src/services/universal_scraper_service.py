@@ -15,6 +15,8 @@ class UniversalScraperService:
         
         try:
             result = await self.extractor.extract(url)
+            result['html'] = result.get('html', '')
+            result['base_url'] = url.split('?')[0].rsplit('/', 1)[0]
             logger.info(f"Successfully extracted content from {result['platform']}")
             return result
         except Exception as e:

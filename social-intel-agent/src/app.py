@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.routers import analyze, health
+from src.routers import analyze, health, image_analyze
 from src.config.logger import setup_logger
 
 app = FastAPI(
@@ -29,6 +29,7 @@ def root():
 
 # Routers
 app.include_router(analyze.router)
+app.include_router(image_analyze.router)
 app.include_router(health.router)
 
 # Startup event
