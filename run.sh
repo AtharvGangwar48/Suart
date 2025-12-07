@@ -15,7 +15,7 @@ BACKEND_PID=$!
 sleep 3
 
 # Frontend
-cd ../react-frontend
+cd ../react-interface
 npm start &
 FRONTEND_PID=$!
 

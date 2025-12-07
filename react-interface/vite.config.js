@@ -5,6 +5,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    open: true
+    open: true,
+    proxy: {
+      '/analyze': 'http://localhost:8001',
+      '/analyze-image': 'http://localhost:8001'
+    }
   }
 });
