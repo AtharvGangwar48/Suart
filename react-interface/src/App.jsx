@@ -56,7 +56,7 @@ function App() {
     }, 2000);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8001/analyze/', {
+      const response = await axios.post('https://suart.onrender.com/analyze/', {
         url: url,
         deep_analysis: false
       });
