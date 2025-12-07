@@ -4,9 +4,7 @@ AI-powered content analysis for URLs and images. Detects harmful content, hate s
 
 **Optimized for Reddit & News Articles** - Works seamlessly with Reddit posts (including image galleries) and news sites like BBC, CNN, Reuters, etc.
 
-![API Interface](https://github.com/user-attachments/assets/6fa2ac8d-c3a9-43f9-8801-d9b602a2bc72)
-
-![Web App Interface](k/web%20app%20result%20for%20image.png)
+![API with Image URL](https://github.com/user-attachments/assets/25931634-a8cf-47af-82e9-e17eb72300e7)
 
 ## Features
 
@@ -20,11 +18,7 @@ AI-powered content analysis for URLs and images. Detects harmful content, hate s
 - **24 Categories**: Fine-grained classification from hateful to safe
 - **Context-Aware**: Distinguishes news reporting from endorsing harmful content
 
-![Result on Webapp](https://github.com/user-attachments/assets/a069a374-f9c3-4797-b2e6-ec94f4a5e2be)
-
 ## How It Works
-
-![API Working](https://github.com/user-attachments/assets/c3ff8272-eaf4-4d3f-b84c-eeb1af353334)
 
 ### 1. Content Extraction
 **Reddit Posts:**
@@ -107,7 +101,11 @@ final_score = (text_risk × 0.6) + (image_risk × 0.4)
 
 ![Result of API](https://github.com/user-attachments/assets/af6301a3-1b36-4ef1-882a-7085f36613e1)
 
-![API Results](k/api%20results.png)
+![API Results](https://github.com/user-attachments/assets/f06fc8e0-eef4-4af1-9c9d-ebf8d2f0b030)
+
+![Result on Webapp](https://github.com/user-attachments/assets/4669a2fb-95ad-4d0a-8f41-ba9af5850b09)
+
+![Web App Interface](https://github.com/user-attachments/assets/bd286bba-ce35-43c8-bc62-e171addaf01a)
 
 ## API Endpoints
 
@@ -157,8 +155,6 @@ POST http://localhost:8001/analyze/
   ]
 }
 ```
-
-![API with Image URL](k/Api%20with%20image%20url.png)
 
 ### Image Analysis
 ```bash
@@ -227,7 +223,8 @@ uvicorn src.app:app --reload --port 8001
 
 ![Working API at Terminal](https://github.com/user-attachments/assets/c7e9e9d5-38aa-465a-9e8e-388119b1b00a)
 
-![Terminal Request](k/terminal%20request%20from%20api.png)
+![Terminal Request](https://github.com/user-attachments/assets/1ef9591c-e8fb-4e72-85f8-2fd7da965412)
+
 
 **Frontend:**
 ```bash
