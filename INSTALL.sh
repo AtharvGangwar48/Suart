@@ -19,7 +19,7 @@ playwright install chromium
 echo "✅ Backend ready"
 
 # Frontend
-cd ../react-frontend
+cd ../react-interface
 echo "📦 Setting up frontend..."
 npm install
 

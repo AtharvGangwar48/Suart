@@ -56,7 +56,7 @@ function App() {
     }, 2000);
 
     try {
-      const response = await axios.post('http://localhost:8001/analyze/', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8001'}/analyze/`, {
         url: url,
         deep_analysis: false
       });
@@ -98,7 +98,7 @@ function App() {
     setImageResult(null);
 
     try {
-      const response = await axios.post('http://localhost:8001/analyze-image/', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8001'}/analyze-image/`, {
         image_url: imageUrl
       });
 
