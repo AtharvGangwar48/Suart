@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { width: 280px; background: #0f0f1a; color: #e0e0ff; font-family: -apple-system, sans-serif; margin: 0; padding: 16px; }
+    h2 { color: #a5b4fc; font-size: 16px; margin: 0 0 4px; }
+    p { color: #666; font-size: 11px; margin: 0 0 16px; }
+    label { font-size: 12px; color: #888; display: block; margin-bottom: 4px; }
+    input { width: 100%; box-sizing: border-box; background: #1a1a2e; border: 1px solid #2a2a4a; color: #e0e0ff; border-radius: 6px; padding: 7px 10px; font-size: 12px; }
+    button { width: 100%; margin-top: 10px; padding: 8px; background: #4f46e5; color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    button:hover { background: #6366f1; }
+    .status { margin-top: 10px; font-size: 12px; color: #22c55e; text-align: center; display: none; }
+    .platforms { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+    .platform { background: #1a1a2e; border: 1px solid #2a2a4a; border-radius: 12px; padding: 3px 10px; font-size: 11px; color: #6366f1; }
+  </style>
+</head>
+<body>
+  <h2>SUART Analyzer</h2>
+  <p>AI content safety for social media</p>
+
+  <label>Backend API URL</label>
+  <input type="text" id="apiUrl" placeholder="http://localhost:8001" />
+  <button id="save">Save</button>
+  <div class="status" id="status">✓ Saved</div>
+
+  <div class="platforms">
+    <span class="platform">Instagram</span>
+    <span class="platform">Reddit</span>
+    <span class="platform">Facebook</span>
+    <span class="platform">Twitter / X</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
