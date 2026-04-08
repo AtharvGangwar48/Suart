@@ -11,7 +11,8 @@ services:
         value: 3.11.0
     healthCheckPath: /health
 
-  - type: static
+  - type: web
+    env: static
     name: suart-frontend
     buildCommand: cd react-interface && npm install && npm run build
     staticPublishPath: ./react-interface/dist
